@@ -13,21 +13,23 @@ import java.util.Stack;
 public class BinaryTreePreorderTraversal {
 
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> l = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         if (root == null) {
-            return l;
+            return list;
         }
+//        traversal(list, root);
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            if (node == null) continue;
-            l.add(node.val);
-            stack.push(node.right);
-            stack.push(node.left);
-
+            TreeNode pop = stack.pop();
+            if(pop == null){
+                continue;
+            }
+            list.add(pop.val);
+            stack.push(pop.right);
+            stack.push(pop.left);
         }
-        return l;
+        return list;
     }
 
     void traversal(List<Integer> list, TreeNode root) {
